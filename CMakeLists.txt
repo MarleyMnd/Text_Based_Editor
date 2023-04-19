@@ -3,4 +3,4 @@ project(Editor_Text_Editor C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(Editor_Text_Editor main.c)
+add_executable(Editor_Text_Editor main.c functions.h functions.c)
