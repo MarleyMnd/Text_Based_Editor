@@ -40,50 +40,54 @@ typedef struct {
     Point *points;
 } Polygon;
 
-typedef struct {
-    int data;
-    struct node *next;
-}NODE;
+typedef enum {
+    POINT, LINE, SQUARE, RECTANGLE, CIRCLE, POLYGON
+} SHAPE_TYPE;
 
 
-void add_point_list(Point *p) {
-    // ???
-}
+typedef struct shape {
+    int id;
+    SHAPE_TYPE shape_type;
+    void *ptrShape;
+} Shape;
 
-void add_line_list(Line *line) {
-    // ???
-}
-
-void add_circle_list(Circle *circle) {
-    // ???
-}
-
-void add_square_list(Square *square) {
-    // ???
-}
-
-void add_rectangle_list(Rectangle *rectangle) {
-    // ???
-}
-
-void add_polygon_list(Polygon *polygon) {
-    // ???
-}
-
-void print_list(NODE *head) {
-    NODE *current = head;
-    while (current != NULL) {
-        printf("%d\n", current->data);
-        current = current->next;
-    }
-}
+//typedef struct {
+//    Shape data;
+//    struct node *next;
+//}NODE;
+//
+//
+//void add_list(Point *p) {
+//    NODE *new_node = malloc(sizeof(NODE));
+//    new_node->data = p;
+//    new_node->next = list;
+//    list = new_node;
+//
+//    if (list == NULL) {
+//        list = new_node;
+//    } else {
+//        NODE *current = list;
+//        while (current->next != NULL) {
+//            current = current->next;
+//        }
+//        current->next = new_node;
+//    }
+//}
+//
+//void print_list(NODE *head) {
+//    NODE *current = head;
+//    while (current != NULL) {
+//        printf("%d\n", current->data);
+//        current = current->next;
+//    }
+//}
 
 Point *create_point(int px, int py) {
     Point *p = malloc(sizeof(Point));
     p->pos_x = px;
     p->pos_y = py;
 
-    add_point_list(p);
+    // add_list(p);
 
     return p;
 }
@@ -93,7 +97,7 @@ Line *create_line(Point *p1, Point *p2) {
     line->p1 = create_point(p1->pos_x, p1->pos_y);
     line->p2 = create_point(p2->pos_x, p2->pos_y);
 
-    add_line_list(line);
+    // add_list(line);
 
     get_next_id();
 
@@ -105,9 +109,10 @@ Circle *create_circle(Point *point, double radius) {
     circle->p = create_point(point->pos_x, point->pos_y);
     circle->radius = radius;
 
-    add_circle_list(circle);
+    // add_list(circle);
 
     get_next_id();
+    return circle;
 }
 
 Square *create_square(Point *point, int length) {
@@ -115,7 +120,7 @@ Square *create_square(Point *point, int length) {
     square->p = create_point(point->pos_x, point->pos_y);
     square->i = length;
 
-    add_square_list(square);
+    // add_list(square);
 
     get_next_id();
 
@@ -128,7 +133,7 @@ Rectangle *create_rectangle(Point *point, int width, int height) {
     rectangle->width = width;
     rectangle->height = height;
 
-    add_rectangle_list(rectangle);
+    // add_list(rectangle);
 
     get_next_id();
 
@@ -144,7 +149,7 @@ Polygon *create_polygon(int num_points, Point *points) {
         polygon->points[i].pos_y = points[i].pos_y;
     }
 
-    add_polygon_list(polygon);
+    // add_list(polygon);
 
     get_next_id();
 
@@ -162,7 +167,7 @@ void print_line(Line *line) {
 }
 
 void print_circle(Circle *circle) {
-    printf("Circle of center (%d,%d) and radius %d", circle->p->pos_x, circle->p->pos_y, circle->radius);
+    printf("Circle of center (%d,%d) and radius %f", circle->p->pos_x, circle->p->pos_y, circle->radius);
 }
 
 void print_square(Square *square) {
@@ -204,17 +209,6 @@ void delete_rect(Rectangle *rectangle) {
 void delete_polygon(Polygon *polygon) {
     free(polygon);
 }
-
-typedef enum {
-    POINT, LINE, SQUARE, RECTANGLE, CIRCLE, POLYGON
-} SHAPE_TYPE;
-
-
-typedef struct shape {
-    int id;
-    SHAPE_TYPE shape_type;
-    void *ptrShape;
-} Shape;
 
 Shape *create_empty_shape(SHAPE_TYPE shape_type) {
     Shape *shp = (Shape *) malloc(sizeof(Shape));
