@@ -103,11 +103,11 @@ void print_point(Point *p) {
 
 
 void print_line(Line *line) {
-    printf("LINE start:[%d,%d] end:[%d,%d]", line->p1->pos_x, line->p1->pos_y, line->p2->pos_x, line->p2->pos_y);
+    printf("Line start:[%d,%d] end:[%d,%d]", line->p1->pos_x, line->p1->pos_y, line->p2->pos_x, line->p2->pos_y);
 }
 
 void print_circle(Circle *circle) {
-    printf("CIRCLE of center (%d,%d) and radius %d", circle->p->pos_x, circle->p->pos_y, circle->radius);
+    printf("Circle of center (%d,%d) and radius %d", circle->p->pos_x, circle->p->pos_y, circle->radius);
 }
 
 void print_square(Square *square) {
