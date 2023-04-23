@@ -5,6 +5,7 @@
 #include <malloc.h>
 
 unsigned int global_id = 0;
+unsigned char list = 0;
 
 unsigned int get_next_id();
 
@@ -39,11 +40,51 @@ typedef struct {
     Point *points;
 } Polygon;
 
+typedef struct {
+    int data;
+    struct node *next;
+}NODE;
+
+
+void add_point_list(Point *p) {
+    // ???
+}
+
+void add_line_list(Line *line) {
+    // ???
+}
+
+void add_circle_list(Circle *circle) {
+    // ???
+}
+
+void add_square_list(Square *square) {
+    // ???
+}
+
+void add_rectangle_list(Rectangle *rectangle) {
+    // ???
+}
+
+void add_polygon_list(Polygon *polygon) {
+    // ???
+}
+
+void print_list(NODE *head) {
+    NODE *current = head;
+    while (current != NULL) {
+        printf("%d\n", current->data);
+        current = current->next;
+    }
+}
 
 Point *create_point(int px, int py) {
     Point *p = malloc(sizeof(Point));
     p->pos_x = px;
     p->pos_y = py;
+
+    add_point_list(p);
+
     return p;
 }
 
@@ -51,6 +92,8 @@ Line *create_line(Point *p1, Point *p2) {
     Line *line = malloc(sizeof(Line));
     line->p1 = create_point(p1->pos_x, p1->pos_y);
     line->p2 = create_point(p2->pos_x, p2->pos_y);
+
+    add_line_list(line);
 
     get_next_id();
 
@@ -62,6 +105,8 @@ Circle *create_circle(Point *point, double radius) {
     circle->p = create_point(point->pos_x, point->pos_y);
     circle->radius = radius;
 
+    add_circle_list(circle);
+
     get_next_id();
 }
 
@@ -69,6 +114,8 @@ Square *create_square(Point *point, int length) {
     Square *square = malloc(sizeof(Square));
     square->p = create_point(point->pos_x, point->pos_y);
     square->i = length;
+
+    add_square_list(square);
 
     get_next_id();
 
@@ -80,6 +127,8 @@ Rectangle *create_rectangle(Point *point, int width, int height) {
     rectangle->p = create_point(point->pos_x, point->pos_y);
     rectangle->width = width;
     rectangle->height = height;
+
+    add_rectangle_list(rectangle);
 
     get_next_id();
 
@@ -94,8 +143,14 @@ Polygon *create_polygon(int num_points, Point *points) {
         polygon->points[i].pos_x = points[i].pos_x;
         polygon->points[i].pos_y = points[i].pos_y;
     }
+
+    add_polygon_list(polygon);
+
+    get_next_id();
+
     return polygon;
 }
+
 
 void print_point(Point *p) {
     printf("POINT[p(%d,%d)]", p->pos_x, p->pos_y);
