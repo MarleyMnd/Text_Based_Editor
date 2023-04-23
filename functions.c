@@ -1,12 +1,12 @@
 //
-// Created by Max and Marley on 19/04/2023.
+// Created by Max and Marley on 10/04/2023.
 //
 
 #include <stdio.h>
 #include <malloc.h>
 
 unsigned int global_id = 0;
-unsigned char list = 0;
+//unsigned char list = 0;
 
 unsigned int get_next_id();
 

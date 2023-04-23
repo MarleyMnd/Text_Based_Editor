@@ -1,5 +1,5 @@
 //
-// Created by Max and Marley on 19/04/2023.
+// Created by Max and Marley on 10/04/2023.
 //
 
 #include <stdio.h>
@@ -33,8 +33,6 @@ int main() {
             scanf("%d %d", &x, &y);
             Point *Point1 = create_point(x, y);
             print_point(Point1);
-
-            printf("\nglobal_id = %d");
         }
         if (choice2 == 2) {
             int x1, y1, x2, y2;
@@ -49,8 +47,6 @@ int main() {
 
             Line *line = create_line(p1, p2);
             print_line(line);
-
-            printf("\nglobal_id = %d");
         }
         if (choice2 == 3) {
             int x5, y5;
@@ -64,8 +60,6 @@ int main() {
             Point *point = create_point(x5, y5);
             Circle *circle = create_circle(point, rad);
             print_circle(circle);
-
-            printf("\nglobal_id = %d");
         }
         if (choice2 == 4) {
             int x3, y3, length;
@@ -79,8 +73,6 @@ int main() {
             Point *point = create_point(x3, y3);
             Square *square = create_square(point, length);
             print_square(square);
-
-            printf("\nglobal_id = %d");
         }
         if (choice2 == 5) {
             int x4, y4, height, width;
@@ -96,8 +88,6 @@ int main() {
             Point *point = create_point(x4, y4);
             Rectangle *rectangle = create_rectangle(point, width, height);
             print_rect(rectangle);
-
-            printf("\nglobal_id = %d");
         }
         if (choice2 == 6) {
             int numb;
@@ -113,8 +103,6 @@ int main() {
             }
             Polygon *polygon = create_polygon(numb, points);
             print_polygon(polygon);
-
-            printf("\nglobal_id = %d");
         }
     } else if (choice1 == 'B') {
         printf("List of the created shapes:\n");
