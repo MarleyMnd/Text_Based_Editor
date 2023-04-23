@@ -3,69 +3,120 @@
 //
 
 #include <stdio.h>
-#include "functions.h"
+#include <malloc.h>
+#include "Functions.h"
 
 
 int main() {
-    int x, y;
-
-    printf("Choose an option:\n");
-    printf("1. Create a point\n");
-    printf("2. Create a line\n");
-    printf("3. Create a square\n");
-    printf("10. Exit\n");
-
-    int option;
-    printf("Enter your choice:");
-    scanf("%d", &option);
-
-    switch(option) {
-        case 1:
-            printf("Enter two coordinates (format: \033[0;31mA B\033[0;0m):");
+    char choice1;
+    int choice2;
+    printf("Please select an action:\n"
+           "A- Add a shape\n"
+           "B- Display the list of shapes\n"
+           "C- Delete a shape\n"
+           "D- Drawing the shapes\n"
+           "E- Help\n");
+    scanf("%c", &choice1);
+    if (choice1 == 'A') {
+        printf("Please select an action:\n"
+               "1- Add a point\n"
+               "2- Add a line\n"
+               "3- Add circle\n"
+               "4- Add a square\n"
+               "5- Add a rectangle\n"
+               "6- Add a polygon\n"
+               "7- Return to previous menu\n");
+        scanf("%d", &choice2);
+        if (choice2 == 1) {
+            int x, y;
+            printf("Give the coordinates in the form \033[0;31mx y\033[0;0m");
             scanf("%d %d", &x, &y);
-            POINT *p = createPoint(x, y);
+            Point *Point1 = create_point(x, y);
+            print_point(Point1);
 
-            printPoint(p);
-            break;
-        case 2:
-            printf("Enter two coordinates for point 1 (format: \033[0;31mA B\033[0;0m):");
-            scanf("%d %d", &x, &y);
-            POINT *p1 = createPoint(x, y);
+            printf("\nglobal_id = %d");
+        }
+        if (choice2 == 2) {
+            int x1, y1, x2, y2;
 
-            printf("Enter two coordinates for point 2 (format: \033[0;31mA B\033[0;0m):");
-            scanf("%d %d", &x, &y);
-            POINT *p2 = createPoint(x, y);
+            printf("Enter the \033[0;31mx\033[0;0m and \033[0;31my\033[0;0m coordinates for the starting point:\n");
+            scanf("%d %d", &x1, &y1);
+            Point *p1 = create_point(x1, y1);
 
-            LINE *l = createLine(p1, p2);
+            printf("Enter the \033[0;31mx\033[0;0m and \033[0;31my\033[0;0m coordinates for the ending point:\n");
+            scanf("%d %d", &x2, &y2);
+            Point *p2 = create_point(x2, y2);
 
-            printLine(l);
-            break;
-        case 3:
-            printf("Enter two coordinates for point 1 (format: \033[0;31mA B\033[0;0m):");
-            scanf("%d %d", &x, &y);
-            POINT *p3 = createPoint(x, y);
+            Line *line = create_line(p1, p2);
+            print_line(line);
 
-            printf("Enter two coordinates for point 2 (format: \033[0;31mA B\033[0;0m):");
-            scanf("%d %d", &x, &y);
-            POINT *p4 = createPoint(x, y);
+            printf("\nglobal_id = %d");
+        }
+        if (choice2 == 3) {
+            int x5, y5;
+            double rad;
+            printf("Enter the \033[0;31mx\033[0;0m and \033[0;31my\033[0;0m coordinates for the center of your circle:\n");
+            scanf("%d %d", &x5, &y5);
 
-            printf("Enter two coordinates for point 3 (format: \033[0;31mA B\033[0;0m):");
-            scanf("%d %d", &x, &y);
-            POINT *p5 = createPoint(x, y);
+            printf("Now choose a radius for your circle:\n");
+            scanf("%d", &rad);
 
-            printf("Enter two coordinates for point 4 (format: \033[0;31mA B\033[0;0m):");
-            scanf("%d %d", &x, &y);
-            POINT *p6 = createPoint(x, y);
+            Point *point = create_point(x5, y5);
+            Circle *circle = create_circle(point, rad);
+            print_circle(circle);
 
-            SQUARE *s = createSquare(p3, p4, p5, p6);
+            printf("\nglobal_id = %d");
+        }
+        if (choice2 == 4) {
+            int x3, y3, length;
 
-            printSquare(s);
-            break;
-        case 10:
-            printf("Exiting...");
-            break;
-        default:
-            printf("Invalid option");
+            printf("Enter the \033[0;31mx\033[0;0m and \033[0;31my\033[0;0m coordinates of your top left point:\n");
+            scanf("%d %d", &x3, &y3);
+
+            printf("Now enter the length of the square\n ");
+            scanf("%d", &length);
+
+            Point *point = create_point(x3, y3);
+            Square *square = create_square(point, length);
+            print_square(square);
+
+            printf("\nglobal_id = %d");
+        }
+        if (choice2 == 5) {
+            int x4, y4, height, width;
+            printf("Enter the \033[0;31mx\033[0;0m and \033[0;31my\033[0;0m coordinates of your top left point:\n");
+            scanf("%d %d", &x4, &y4);
+
+            printf("Now enter the width of the square\n");
+            scanf("%d", &width);
+
+            printf("Now enter the height of the square\n");
+            scanf("%d", &height);
+
+            Point *point = create_point(x4, y4);
+            Rectangle *rectangle = create_rectangle(point, width, height);
+            print_rect(rectangle);
+
+            printf("\nglobal_id = %d");
+        }
+        if (choice2 == 6) {
+            int numb;
+            printf("Enter the number of points in the polygon: ");
+            scanf("%d", &numb);
+
+            Point *points = malloc(numb * sizeof(Point));
+            for (int i = 0; i < numb; i++) {
+                int x, y;
+                printf("Enter the \033[0;31mx\033[0;0m and \033[0;31my\033[0;0m coordinates of point %d: ", i + 1);
+                scanf("%d %d", &x, &y);
+                points[i] = *create_point(x, y);
+            }
+            Polygon *polygon = create_polygon(numb, points);
+            print_polygon(polygon);
+
+            printf("\nglobal_id = %d");
+        }
     }
     return 0;
 }
+
