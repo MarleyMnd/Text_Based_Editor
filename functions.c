@@ -1,6 +1,7 @@
 //
 // Created by Marley on 19/04/2023.
 //
+
 #include <stdio.h>
 #include <malloc.h>
 
@@ -250,10 +251,20 @@ Shape *create_rectangle_shape(int px, int py, int width, int height) {
     return shp;
 }
 
-unsigned int get_next_id() {
-    return ++global_id;
-}
 
 Shape *create_polygon_shape(int lst[], int n) {
+    Shape *shp = create_empty_shape(POLYGON);
+    Point *points = malloc(n * sizeof(Point));
+    for (int i = 0; i < n; i++) {
+        points[i].pos_x = lst[i];
+        points[i].pos_y = lst[i + 1];
+        i++;
+    }
+    Polygon *polygon = create_polygon(n, points);
+    shp->ptrShape = polygon;
+    return shp;
+}
 
+unsigned int get_next_id() {
+    return ++global_id;
 }
