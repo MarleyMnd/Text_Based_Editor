@@ -17,7 +17,7 @@
 typedef struct {
     int pos_x;
     int pos_y;
-}Point;
+} Point;
 
 /* The second structure, is the line, here again we take two points (their structures) and we use them to
  * have the starting and ending point of the line, both attributes are pointers.
@@ -25,7 +25,7 @@ typedef struct {
 typedef struct {
     Point *p1;
     Point *p2;
-}Line;
+} Line;
 
 /* Here for the circle, we will have a radius and a pointer p of type Point, meaning that we will have
  * it's coordinates and we will just consider radius as the radius.
@@ -40,10 +40,10 @@ typedef struct {
  * later to create their geometrical shapes
  */
 
-typedef struct{
+typedef struct {
     Point *p;
     int length;
-}Square;
+} Square;
 
 typedef struct {
     Point *p;
@@ -62,24 +62,44 @@ typedef struct {
 // Bellow are all the prototypes of the functions, if you pass your mouse on the function it should give
 // you a small description
 Point *create_point(int px, int py);
-Line *create_line(Point * p1, Point * p2);
-Circle *create_circle(Point * point, double radius);
-Square *create_square(Point * point, int length);
+
+Line *create_line(Point *p1, Point *p2);
+
+Circle *create_circle(Point *point, double radius);
+
+Square *create_square(Point *point, int length);
+
 Rectangle *create_rectangle(Point *point, int width, int height);
-Polygon* create_polygon(int num_points, Point *points);
-void print_point(Point * p);
-void print_line(Line * line);
+
+Polygon *create_polygon(int num_points, Point *points);
+
+void print_point(Point *p);
+
+void print_line(Line *line);
+
 void print_circle(Circle *circle);
-void print_square(Square * square);
-void print_rect(Rectangle * rectangle);
+
+void print_square(Square *square);
+
+void print_rect(Rectangle *rectangle);
+
 void print_polygon(Polygon *poly);
-void delete_line(Line * line);
-void delete_point(Point * point);
+
+void delete_line(Line *line);
+
+void delete_point(Point *point);
+
 void delete_circle(Circle *circle);
-void delete_square(Square * square);
-void delete_rect(Rectangle * rectangle);
+
+void delete_square(Square *square);
+
+void delete_rect(Rectangle *rectangle);
+
 void delete_polygon(Polygon *polygon);
-typedef enum { POINT, LINE, SQUARE, RECTANGLE, CIRCLE, POLYGON} SHAPE_TYPE;
+
+typedef enum {
+    POINT, LINE, SQUARE, RECTANGLE, CIRCLE, POLYGON
+} SHAPE_TYPE;
 
 /* The structure shape takes an ID that will give each shape an unique identifier, and takes a shape type
  * that will correspond to one of the geometric forms we have creates and the last attribute it has
@@ -89,14 +109,17 @@ typedef struct shape {
     int id;
     SHAPE_TYPE shape_type;
     void *ptrShape;
-}Shape;
+} Shape;
 
 Shape *create_point_shape(int px, int py);
-Shape *create_line_shape(int px1, int py1, int px2, int py2);
-Shape *create_square_shape(int px, int py, int length);
-Shape *create_rectangle_shape(int px, int py, int width, int height);
-Shape *create_polygon_shape(int lst[], int n);
 
+Shape *create_line_shape(int px1, int py1, int px2, int py2);
+
+Shape *create_square_shape(int px, int py, int length);
+
+Shape *create_rectangle_shape(int px, int py, int width, int height);
+
+Shape *create_polygon_shape(int lst[], int n);
 
 
 struct pixel {
@@ -105,8 +128,7 @@ struct pixel {
 };
 typedef struct pixel Pixel;
 
-void pixel_point(Shape* shape, Pixel*** pixel_tab, int* nb_pixels);
-
+void pixel_point(Shape *shape, Pixel ***pixel_tab, int *nb_pixels);
 
 
 #endif //PROJECT_C_FUNCTION_H
