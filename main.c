@@ -1,8 +1,12 @@
+//
+// Created by Max Chartier and Marley Menard
+//
+
 // This will be the main function, in which we can find the use of the different functions in a loop
 // that will make everything work together. We start by including the different files, starting with
 // functions header which contains all the definition of the functions and the structures used in this
 // program. After that we include the area header which contain all the code part for the creation of the
-//area and the drawing inside of it. We will have a big loop that contains all the different parts of
+// area and the drawing inside of it. We will have a big loop that contains all the different parts of
 // our code meaning the adding of a shape, the display of the list of shape, etc.
 
 #include <stdio.h>
@@ -13,10 +17,6 @@
 unsigned int global_ID = 0;
 
 int main() {
-    Area *draw_zone = create_area(12, 14);
-    Shape *shape1 = create_line_shape(5, 5, 10, 10);
-    add_shape_to_area(draw_zone, shape1);
-    print_area(draw_zone);
     // Here we defined the different variables used in the main, the choice and choice2 are going to be
     // used so that the user can make a choice between the options, if he writes 'P' at any moment, he
     // will stop the program.
@@ -39,7 +39,7 @@ int main() {
         if (choice == 'A') {
             // here we have the second choice that allows the user to choose between the different geometrical
             // shapes
-            printf("Please select an action:\n"
+            printf("\nPlease select an action:\n"
                    "1- Add a point\n"
                    "2- Add a line\n"
                    "3- Add circle\n"

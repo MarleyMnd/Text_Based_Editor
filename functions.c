@@ -110,7 +110,7 @@ void print_rect(Rectangle *rectangle) {
            rectangle->width);
 }
 
-// The print polygon once again uses a loop, that will display the points one by one, we will re use
+// The print polygon once again uses a loop, that will display the points one by one, we will reuse
 // the format of the point printing.
 void print_polygon(Polygon *poly) {
     printf("Polygon with %d points:\n", poly->num_points);
@@ -147,11 +147,11 @@ void delete_polygon(Polygon *polygon) {
 
 
 // The second part off the functions will create what we call the shapes, they will be particularly
-// useful cause they will be used for the drawing and for the display.
+// useful because they will be used for the drawing and for the display.
 
 /* The function create_empty_shape will be used as a base for all the other shapes,
  * it will create a space for the shape, that will be initialized to NULL, after that it will say that
- * the attribute of shp shape_type will be equal to the shape type given in parameter, which makes
+ * the attribute of shp: shape_type will be equal to the shape type given in parameter, which makes
  * it usable for all the other shapes, the id will be the one for the first shape, therefor 1, after
  * that we will return shp.
  */
@@ -175,8 +175,8 @@ Shape *create_point_shape(int px, int py) {
     return shp;
 }
 
-/* For the create line we do the same as for the create_point_shape meaning that we will pass by
- * the two points, then we will create the line, afer which we will give shp the shape of p in this case
+/* For the create_line we do the same as for the create_point_shape meaning that we will pass by
+ * the two points, then we will create the line, after which we will give shp the shape of p in this case
  * the line
  */
 Shape *create_line_shape(int px1, int py1, int px2, int py2) {
@@ -189,8 +189,8 @@ Shape *create_line_shape(int px1, int py1, int px2, int py2) {
     return shp;
 }
 
-/* For the create square we do the same as for the create_point_shape meaning that we will pass by
- * the point, then we will create the square, afer which we will give shp the shape of p in this case
+/* For the create_square we do the same as for the create_point_shape meaning that we will pass by
+ * the point, then we will create the square, after which we will give shp the shape of p in this case
  * the square
  */
 Shape *create_square_shape(int px, int py, int length) {
@@ -202,8 +202,8 @@ Shape *create_square_shape(int px, int py, int length) {
     return shp;
 }
 
-/* For the create rectangle we do the same as for the create_point_shape meaning that we will pass by
- * the point, then we will create the rectangle, afer which we will give shp the shape of p in this case
+/* For the create_rectangle we do the same as for the create_point_shape meaning that we will pass by
+ * the point, then we will create the rectangle, after which we will give shp the shape of p in this case
  * the rectangle
  */
 Shape *create_rectangle_shape(int px, int py, int width, int height) {
@@ -218,8 +218,8 @@ Shape *create_rectangle_shape(int px, int py, int width, int height) {
 Shape *create_polygon_shape(int lst[], int n) {
 }
 
-/* the pixel create_pixel function is a function we didn't use in our project ,it is ussefull for
- * the allocation of memory space of type pixel, to initialize it and returns the adress of this
+/* the create_pixel function is a function we didn't use in our project ,it is useful for
+ * the allocation of memory space of type pixel, to initialize it and returns the address of this
  * memory.
  */
 Pixel *create_pixel(int px, int py) {
