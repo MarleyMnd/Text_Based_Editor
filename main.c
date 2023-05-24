@@ -28,13 +28,28 @@ int main() {
         printf("Please select an action:\n"
                "A- Add a shape\n"
                "B- Display the list of shapes\n"
-               "C- Delete a shape\n"
+               "C- Delete the shapes\n"
                "D- Drawing the shapes\n"
                "E- Help\n"
                "P- To exit\n");
         scanf("%c", &choice);
+        if (choice == 'C'){
+            printf("The number of shapes has been initialized to 0\n");
+            nb_shape = 0;
+        }
         if (choice == 'P' || choice2 == 'P') {
             break;
+        }
+        if (choice=='B'){
+            //The choice B will correspond to the number of shape present in the memory.
+            printf("The number of shape is : %d", nb_shape);
+        }
+        if (choice == 'E'){
+            printf("Hello!\n Welcome to our Vector Text-Based Editor!\n Here you can create "
+                   "any geometric shape you want, the square, the line ,the point or even any polygon you would dream of!"
+                   "\nTo do that you need to press A then you will have the menu of shapes you can create with"
+                   "the coordinates you need to enter\n If you want to have access to the number of shapes you have created"
+                   " press B!\n");
         }
         if (choice == 'A') {
             // here we have the second choice that allows the user to choose between the different geometrical
@@ -158,19 +173,8 @@ int main() {
                 // We print the polygon points one by one
                 nb_shape += 1;
             }
-            if (choice == 'B') {
-                //The choice B will correspond to the number of shape present in the memory.
-                printf("The number of shape is : %d", nb_shape);
-            }
-            if (choice == 'E') {
-                printf("Hello!\n Welcome to our Vector Text-Based Editor!\n Here you can create "
-                       "any geometric shape you want, the square, the line ,the point or even any polygon you would dream of!"
-                       "\nTo do that you need to press A then you will have the menu of shapes you can create with"
-                       "the coordinates you need to enter\n If you want to have access to the number of shapes you have created"
-                       " press B!\n");
-            }
         }
-        run = 1;
+        printf("\n");
     }
     return 0;
 }

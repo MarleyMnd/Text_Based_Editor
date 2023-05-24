@@ -75,7 +75,7 @@ Rectangle *create_rectangle(Point *point, int width, int height) {
    which means it needs to have a creation of points that is repeatable, meaning that we will need to
    have a loop, in which the positions will be assigned to the point after which we will return the polygon
    */
-Polygon *create_polygon(int num_points, Point *points) {
+Polygon *create_polygon(int num_points, Point* points) {
     Polygon *polygon = malloc(sizeof(Polygon));
     polygon->num_points = num_points;
     polygon->points = malloc(num_points * sizeof(Point));
